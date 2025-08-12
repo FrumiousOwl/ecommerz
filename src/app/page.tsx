@@ -1,103 +1,68 @@
-import Image from "next/image";
+import Link from "next/link";
+import { FaShoppingCart, FaStore, FaUserCircle } from "react-icons/fa";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="grid gap-12">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden rounded-2xl border bg-gray-50 p-10 shadow-lg dark:bg-gray-900 md:p-16">
+        <div className="relative z-10">
+          <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+            Discover Your Next Favorite Thing
+          </h1>
+          <p className="mt-4 max-w-lg text-lg text-gray-600 dark:text-gray-300">
+            A demo store with modern features like a shopping cart, wishlists, and a seamless checkout experience.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link
+              href="/products"
+              className="inline-flex items-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+            >
+              <FaStore className="mr-2" />
+              Browse Products
+            </Link>
+            <Link
+              href="/cart"
+              className="inline-flex items-center rounded-full border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+            >
+              <FaShoppingCart className="mr-2" />
+              View Cart
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        {/* An illustrative element for visual interest */}
+        <div className="absolute -bottom-16 -right-16 h-64 w-64 rounded-full bg-blue-500/10 dark:bg-blue-400/10 blur-3xl"></div>
+      </section>
+
+      {/* Feature Cards Section */}
+      <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Card 1 */}
+        <div className="group rounded-xl border p-6 transition-all duration-300 hover:shadow-lg dark:hover:border-gray-600">
+          <FaUserCircle className="h-8 w-8 text-blue-500" />
+          <h3 className="mt-4 text-xl font-semibold text-gray-900 dark:text-white">Guest Checkout</h3>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            Checkout quickly and securely without creating an account.
+          </p>
+        </div>
+        
+        {/* Card 2 */}
+        <div className="group rounded-xl border p-6 transition-all duration-300 hover:shadow-lg dark:hover:border-gray-600">
+          <FaUserCircle className="h-8 w-8 text-blue-500" />
+          <h3 className="mt-4 text-xl font-semibold text-gray-900 dark:text-white">Wishlist</h3>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            Save products you love for later.
+          </p>
+        </div>
+        
+        {/* Card 3 */}
+        <div className="group rounded-xl border p-6 transition-all duration-300 hover:shadow-lg dark:hover:border-gray-600">
+          <FaUserCircle className="h-8 w-8 text-blue-500" />
+          <h3 className="mt-4 text-xl font-semibold text-gray-900 dark:text-white">Tickets & Messages</h3>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            Directly contact support or sellers for assistance.
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
