@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useApp } from "@/context/AppContext";
-import ThemeToggle from "./ThemeToggle";
+import ThemeDropdown from "./ThemeDropdown";
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
@@ -44,7 +44,7 @@ export default function Navbar() {
           <button className="rounded-md border px-3 py-2 text-sm">Search</button>
         </form>
         <div className="ml-2 flex items-center gap-2">
-          <ThemeToggle />
+          <ThemeDropdown />
           <Link href="/cart" className="relative rounded-md border px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10">
             Cart
             {cartCount > 0 && (

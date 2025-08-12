@@ -18,7 +18,7 @@ const initialState: AppState = {
   tickets: [],
   messageThreads: [],
   vouchers: sampleVouchers,
-  theme: (readString(THEME_KEY, "") as "light" | "dark") || "light",
+  theme: (readString(THEME_KEY, "") as string) || "light",
 };
 
 // Actions
@@ -38,7 +38,7 @@ type Action =
   | { type: "UPDATE_TICKET_STATUS"; payload: { id: string; status: Ticket["status"] } }
   | { type: "ADD_MESSAGE_THREAD"; payload: MessageThread }
   | { type: "ADD_MESSAGE_TO_THREAD"; payload: { threadId: string; message: MessageThread["messages"][number] } }
-  | { type: "SET_THEME"; payload: "light" | "dark" };
+  | { type: "SET_THEME"; payload: string };
 
 function reducer(state: AppState, action: Action): AppState {
   switch (action.type) {
@@ -120,6 +120,9 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!isBrowser) return;
     const root = document.documentElement;
+    // DaisyUI theme attribute
+    root.setAttribute("data-theme", state.theme);
+    // Keep Tailwind dark class for backwards-compat if theme is exactly "dark"
     if (state.theme === "dark") {
       root.classList.add("dark");
     } else {

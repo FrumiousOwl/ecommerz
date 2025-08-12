@@ -129,5 +129,5 @@ export type AppState = {
   tickets: Ticket[];
   messageThreads: MessageThread[];
   vouchers: Voucher[];
-  theme: "light" | "dark";
+  theme: string;
 };
